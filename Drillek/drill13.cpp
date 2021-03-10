@@ -65,18 +65,21 @@ int main(){
 	i3.set_mask(Point{200,200},200,200);
 	win.attach(i3);
 	
-	Image i4 {Point {400,100},"image.jpg"};
-	i4.set_mask(Point{200,200},200,200);
-	
-	//5. feladat nem akar müködni, segmentation fault (core dumped hibaüzenetet dob ki)
-	//for(int i=0;i<3;i++){
-	//	for(int j=0;j<3;j++){
-	//		i4.move(100,0);
-	//		win.wait_for_button();
-	//	}
-	//	win.wait_for_button();
-	//}
+	Image i4 {Point {0,0},"image.jpg"};
+	i4.set_mask(Point{0,0},100,100);
+	win.attach(i4);
 	
 	win.wait_for_button();
+	
+	for(int i=0;i<=8;i++){
+		for (int j=0;j<=8;j++){
+			i4.move(100,0);
+			win.wait_for_button();
+		}
+		i4.move(-700,100);
+		win.wait_for_button();
+	}
+	
+	
 	return 0;
 }
